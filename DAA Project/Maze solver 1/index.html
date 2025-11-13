@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧩 Maze Solver: BFS, Dijkstra & A*</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🧩 Maze Solver: BFS, Dijkstra & A*</h1>
+
+  <div class="controls">
+    <button onclick="generateGrid()">Generate Grid</button>
+    <button onclick="randomWalls()">Random Walls</button>
+
+    <label>Algorithm:</label>
+    <select id="algo">
+      <option value="bfs">BFS</option>
+      <option value="dijkstra">Dijkstra</option>
+      <option value="a*">A*</option>
+    </select>
+
+    <label>Speed:</label>
+    <select id="speed">
+      <option value="80">Slow</option>
+      <option value="40" selected>Medium</option>
+      <option value="10">Fast</option>
+    </select>
+
+    <label>Grid Size:</label>
+    <input type="range" id="sizeSlider" min="10" max="40" value="20" oninput="updateSizeLabel(this.value)">
+    <span id="sizeValue">20x20</span>
+
+    <button onclick="runAlgorithm()">Run</button>
+    <button onclick="resetGrid()">Reset</button>
+  </div>
+
+  <div class="stats">
+    <p>Explored: <span id="explored">0</span></p>
+    <p>Time: <span id="time">0 ms</span></p>
+  </div>
+
+  <label class="lock-walls">
+    <input type="checkbox" id="lockWalls"> 🔒 Lock Walls (for fair comparison)
+  </label>
+
+  <div class="main-container">
+    <div class="maze-section">
+      <canvas id="mazeCanvas" width="600" height="600"></canvas>
+
+      <div class="legend">
+        <span class="cell start"></span> Start
+        <span class="cell end"></span> End
+        <span class="cell wall"></span> Wall
+        <span class="cell visited"></span> Visited
+        <span class="cell path"></span> Path
+      </div>
+    </div>
+
+    <div class="history">
+      <h3>Run History</h3>
+      <ul id="historyList"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
